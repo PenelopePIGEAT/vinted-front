@@ -25,6 +25,8 @@
   height: 500px;
   background-color: white;
   padding: 5px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .offer-card:hover {
@@ -72,4 +74,18 @@
 .detail {
   font-size: 13px;
   margin: 1px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination-controls button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
 }
