@@ -7,6 +7,7 @@ const Header = () => {
       <button>s'inscrire</button>
       <button>Se connecter</button>
       <button>vends tes articles</button>
+      <button>déconnexion</button>
       <img className="header-banner" src={banniere} alt="bannière vinted" />
     </div>
   );
