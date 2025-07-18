@@ -1,22 +1,43 @@
 import logo from "../img/logo.svg";
 import banniere from "../img/banniere.jpg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ handleToken, userToken }) => {
+  const location = useLocation();
+  const isSignUpPage = location.pathname === "/signup";
+  const isLoginPage = location.pathname === "/login";
+
   return (
     <div className="header">
       <Link to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
-      <Link to="/signup">
-        <button>S'inscrire</button>
-      </Link>
-      <Link to="/login">
-        <button>Se connecter</button>
-      </Link>
+      {!userToken ? (
+        <>
+          <Link to="/login">
+            <button>Connexion</button>
+          </Link>
+          <Link to="/signup">
+            <button>S'inscrire</button>
+          </Link>
+        </>
+      ) : (
+        <Link>
+          <button
+            onClick={() => {
+              handleToken();
+            }}
+          >
+            Déconnexion
+          </button>
+        </Link>
+      )}
+
       <button>Vends tes articles</button>
-      <button>Déconnexion</button>
-      <img className="header-banner" src={banniere} alt="bannière vinted" />
+
+      {!isSignUpPage && !isLoginPage && (
+        <img className="header-banner" src={banniere} alt="bannière vinted" />
+      )}
     </div>
   );
 };
