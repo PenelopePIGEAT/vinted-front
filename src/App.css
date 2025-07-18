@@ -16,6 +16,10 @@
   margin-top: 10px;
 }
 
+.logo {
+  margin: 20px;
+}
+
 /* Conteneur des offres */
 .home-container {
   display: flex;
