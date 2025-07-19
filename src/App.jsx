@@ -30,7 +30,7 @@ function App() {
         <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route
-          path="/login/publish"
+          path="/publish"
           element={<Publish handleToken={handleToken} />}
         />
       </Routes>
