@@ -5,52 +5,135 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: white;
 }
 
-/* Style du Header */
-
+/* Header global */
 .header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Top zone: logo, recherche, boutons */
+.header-top {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.header-left {
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 10px 20px;
-  gap: 20px;
 }
 
 .logo {
-  margin: 10px;
+  height: 50px;
 }
 
-.filtre-form {
+/* Recherche centrée */
+.header-center {
+  flex: 2;
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex: 1;
-  gap: 15px;
-  flex-wrap: wrap;
-  max-width: 800px;
+  min-width: 0;
 }
 
-.filter-form input[type="text"] {
-  padding: 6px 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 160px;
-}
-
-.filter-form select {
-  padding: 6px 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.slider-container {
+.header-center form {
+  width: 100%;
+  max-width: 500px;
   display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  width: 180px;
+  gap: 10px;
+}
+
+.header-center input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.header-center button {
+  background-color: #2cb1ba;
+  color: white;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.header-center button:hover {
+  cursor: pointer;
+}
+
+/* Boutons à droite */
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.header-right button {
+  background-color: #2cb1ba;
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-right button:hover {
+  cursor: pointer;
+}
+
+/* Bouton de déconnexion */
+.header button.logout {
+  background-color: #c2175b;
+}
+
+.header button.logout:hover {
+  cursor: pointer;
+}
+
+/* Section filtres */
+.filters {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.filter-form input[type="text"],
+.filter-form select {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 200px;
 }
 
 .filter-form button[type="submit"] {
@@ -61,40 +144,32 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .filter-form button[type="submit"]:hover {
-  background-color: #239ca6;
-}
-
-.header-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-}
-
-.header button {
-  background-color: #2cb1ba;
-  color: white;
-  padding: 8px 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
-  margin: 0 5px;
 }
 
-.header button:hover {
-  background-color: #239ca6;
+/* Slider */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  width: 300px;
 }
 
+/* Bannière */
 .header-banner {
   width: 100%;
   max-height: 350px;
   object-fit: cover;
-  margin-top: 10px;
+  margin-top: 20px;
+  border-radius: 4px;
 }
+
+/*Page Home*/
 
 /* Conteneur des offres */
 .home-container {
@@ -112,7 +187,6 @@
   flex-direction: column;
   width: calc(100% / 5 - 10px);
   height: 500px;
-  background-color: white;
   padding: 5px;
   text-decoration: none;
   color: inherit;
@@ -179,6 +253,107 @@
   cursor: pointer;
 }
 
+/* Page Offer */
+.offer-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  gap: 40px;
+  background-color: #eaedee;
+}
+
+.offer-image-container,
+.offer-info-container {
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.offer-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.offer-price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+}
+
+.detail-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  background-color: white;
+}
+
+.detail-key {
+  color: grey;
+}
+
+.offer-separator {
+  margin: 30px 0;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.offer-product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.offer-product-description {
+  font-size: 14px;
+  color: #444;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  background-color: white;
+}
+
+.offer-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  background-color: white;
+}
+
+.owner-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.buy-button {
+  background-color: #2cb1ba;
+  color: white;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  cursor: pointer;
+}
+
 /* Page Submit et Login */
 
 .login-container {
@@ -225,10 +400,186 @@
 }
 
 .formulaire input[type="submit"]:hover {
-  background-color: #239ca6;
+  background-color: #2cb1ba;
 }
 .login-footer {
   text-align: center;
   font-size: 14px;
-  color: #239ca6;
+  color: #2cb1ba;
+}
+
+/* Page Publish */
+
+.publish-background {
+  background-color: #eaedee;
+}
+
+.publish-wrapper {
+  margin: 30px auto;
+  padding: 20px 30px;
+  max-width: 900px;
+}
+
+/* Texte en haut à gauche */
+.intro-text {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Formulaire en colonne */
+.publish-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.publish-block-photos,
+.publish-block-title-desc,
+.publish-block-details,
+.publish-block-price {
+  background-color: #eaedee;
+  padding: 20px 25px;
+  box-shadow: 0 2px 6px none;
+}
+
+.publish-block-photos {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+}
+
+/* Dropzone style */
+.dropzone {
+  flex-grow: 1;
+  border: 1px dashed #bbb;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #666;
+  font-size: 1rem;
+  user-select: none;
+  background-color: white;
+}
+
+.dropzone p {
+  margin: 0;
+}
+
+.dropzone button {
+  padding: 8px 15px;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropzone button:hover {
+  cursor: pointer;
+}
+
+/* Liste des images sélectionnées */
+.selected-images {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Bloc Titre + Description */
+.publish-block-title-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 180px;
+  background-color: white;
+}
+
+/* Inputs et textarea styles */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.textarea-desc {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.input-title {
+  font-weight: 300;
+  font-size: 8px;
+}
+
+/* Bloc détails : Marque, Taille, Couleur, État, Lieu */
+.publish-block-details {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+  background-color: white;
+}
+
+/* Bloc Prix + checkbox */
+.publish-block-price {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: white;
+}
+
+.input-price {
+  max-width: 150px;
+}
+
+/* Checkbox alignement */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #333;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Bouton Ajouter */
+.btn-submit {
+  background-color: #2cb1ba;
+  color: white;
+  padding: 14px 0;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  cursor: pointer;
+}
+
+/* Page Payment */
+
+.payment-background {
+  background-color: #eaedee;
 }

@@ -1,30 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SignUp = ({ handleToken }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsLetter, setNewsLetter] = useState(false);
+  const [avatar, setAvatar] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("username", userName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("newsletter", newsLetter);
+      if (avatar) {
+        formData.append("avatar", avatar);
+      }
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: userName,
-          email: email,
-          password: password,
-          newsletter: newsLetter,
-        }
+        formData
       );
       console.log(response.data);
       handleToken(response.data.token);
-      navigate("/");
+      navigate(from);
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +58,8 @@ const SignUp = ({ handleToken }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <label>Photo de profil</label>
+        <input type="file" onChange={(e) => setAvatar(e.target.files[0])} />
         <input
           type="checkbox"
           checked={newsLetter}

@@ -5,6 +5,7 @@ import Offer from "./pages/Offer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 import Header from "./components/Header";
 import Cookie from "js-cookie";
 import { useState } from "react";
@@ -15,6 +16,7 @@ function App() {
   const handleToken = (token) => {
     if (token) {
       Cookie.set("userToken", token, { expires: 7 });
+      setUserToken(token);
     } else {
       Cookie.remove("userToken");
       setUserToken(null);
@@ -26,12 +28,16 @@ function App() {
       <Header handleToken={handleToken} userToken={userToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer token={userToken} />} />
         <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route
           path="/publish"
-          element={<Publish handleToken={handleToken} />}
+          element={<Publish handleToken={handleToken} token={userToken} />}
+        />
+        <Route
+          path="/payment"
+          element={<Payment handleToken={handleToken} token={userToken} />}
         />
       </Routes>
     </Router>
